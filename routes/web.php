@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
+    Route::get('index','IndexController@index')->name('admin-index');
+    Route::get('main','IndexController@main')->name('admin-main');
+    Route::group(['prefix' => 'admin'],function(){
+        Route::get('article','ArticleController@index')->name('article-index');
+    });
+});
